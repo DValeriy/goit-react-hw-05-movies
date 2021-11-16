@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Redirect, useLocation, useRouteMatch } from "react-router";
+import { Redirect, useHistory, useLocation, useRouteMatch } from "react-router";
 import { Link, Route, Switch } from "react-router-dom";
 
 import Button from "../components/Button/Button";
@@ -18,16 +18,19 @@ const MovieDetailsPage = () => {
     isExact,
   } = useRouteMatch();
   const location = useLocation();
+  const { push } = useHistory();
 
   useEffect(() => {
     movieId &&
-      getFilmInfo(movieId).then((response) => setMovieInfo(response.data));
+      getFilmInfo(movieId)
+        .then((response) => setMovieInfo(response.data))
+        .catch((err) => push("/"));
   }, []);
 
   return (
     <>
       <Button />
-      {Object.keys(movieInfo).length && <MovieCard movieInfo={movieInfo} />}
+      {!!Object.keys(movieInfo).length && <MovieCard movieInfo={movieInfo} />}
       <h4>Additional information:</h4>
       <Link
         to={{

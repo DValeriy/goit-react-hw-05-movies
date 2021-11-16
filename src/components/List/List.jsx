@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import ListItem from "./ListItem/ListItem";
 import s from "./List.module.css";
 
@@ -10,6 +10,13 @@ const List = ({ listOfFilms }) => {
   return <ul className={s.list}>{markUp}</ul>;
 };
 
-List.propTypes = {};
+List.propTypes = {
+  listOfFilms: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
+};
 
 export default List;

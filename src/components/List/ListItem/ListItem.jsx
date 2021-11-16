@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-// import PropTypes from "prop-types";
-// import s from "../List.module.css";
+import PropTypes from "prop-types";
 
 const ListItem = ({ title, id, s }) => {
   const location = useLocation();
@@ -21,6 +20,9 @@ const ListItem = ({ title, id, s }) => {
   );
 };
 
-ListItem.propTypes = {};
+ListItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+};
 
 export default ListItem;

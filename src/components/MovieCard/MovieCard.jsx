@@ -1,4 +1,5 @@
 import s from "./MovieCard.module.css";
+import PropTypes from "prop-types";
 
 const MovieCard = ({
   movieInfo: {
@@ -13,14 +14,13 @@ const MovieCard = ({
   const genresArr =
     genres?.map(({ name }) => <span key={name}> {name} </span>) || [];
   const rate = vote_average * 10;
+  const img = poster_path
+    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+    : `https://orten.in.ua/default-img.png`;
   return (
     <article className={s.cardWrap}>
       <div className={s.imgWrap}>
-        <img
-          className={s.img}
-          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-          alt={original_title}
-        />
+        <img className={s.img} src={img} alt={original_title} />
       </div>
       <div className={s.contentWrap}>
         <h2>
@@ -37,5 +37,20 @@ const MovieCard = ({
       </div>
     </article>
   );
+};
+
+MovieCard.propTypes = {
+  movieInfo: PropTypes.shape({
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired
+    ).isRequired,
+    original_title: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    release_date: PropTypes.string.isRequired,
+  }).isRequired,
 };
 export default MovieCard;
