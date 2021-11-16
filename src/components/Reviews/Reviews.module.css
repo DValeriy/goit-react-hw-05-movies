@@ -1,0 +1,9 @@
+.contentWrap {
+  margin-top: 10px;
+  padding: 20px;
+  background-color: rgb(243, 188, 188);
+  border: 2px solid rgb(194, 241, 139);
+}
+.contentWrap :not(:last-child) {
+  margin-bottom: 10px;
+}
