@@ -1,10 +1,12 @@
 import { Route, Switch, Redirect } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
+import NavBar from "./components/NavBar";
+// const NavBar = lazy(() =>
+//   import("./components/NavBar" /* webpackChunkName: "NavBar" */)
+// );
+
 const HomePage = lazy(() =>
   import("./pages/HomePage" /* webpackChunkName: "home-page" */)
-);
-const NavBar = lazy(() =>
-  import("./components/NavBar" /* webpackChunkName: "NavBar" */)
 );
 const MovieDetailsPage = lazy(() =>
   import(

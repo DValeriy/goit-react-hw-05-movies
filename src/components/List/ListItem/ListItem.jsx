@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 const ListItem = ({ title, id, s }) => {
   const location = useLocation();
-  // console.log(location);
   return (
     <Link
       className={s.item}
